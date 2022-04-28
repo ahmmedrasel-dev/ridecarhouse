@@ -1,10 +1,10 @@
 # Ride-Carhouse stock managment web application.
 
+## Client Site Links:
+
 Project Source Code Link: [github repo](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-ahmmedrasel-dev.git).
 
-## Available Scripts
-
-In the project directory, you can run:
+Project Live Link: [Live Link](https://ride-carhouse.web.app/)
 
 ### `npm start`
 
