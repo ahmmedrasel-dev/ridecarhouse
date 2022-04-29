@@ -1,5 +1,5 @@
 module.exports = {
-  ontent: [
+  content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
