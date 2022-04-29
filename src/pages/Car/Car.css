@@ -1,0 +1,16 @@
+.brandName {
+  font-family: 'Poppins',
+  sans-serif;
+  font-weight: 700;
+}
+
+.car p {
+  font-family: 'Poppins',
+  sans-serif;
+  font-weight: 400;
+}
+
+.car p span {
+  font-family: 'Anton',
+  sans-serif;
+}
