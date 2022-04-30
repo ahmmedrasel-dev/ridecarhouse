@@ -27,7 +27,7 @@ const AddItem = () => {
 
     try {
       const postData = async () => {
-        const { data } = await axios.post('https://ride-carhouse.web.app/add-item', newCarItem);
+        const { data } = await axios.post('https://intense-mesa-21235.herokuapp.com/add-item', newCarItem);
         if (!data.success) {
           return toast.error(data.error)
         }
@@ -40,7 +40,6 @@ const AddItem = () => {
     catch (error) {
       toast.error(error.message)
     }
-    event.form.clear()
   }
 
 
