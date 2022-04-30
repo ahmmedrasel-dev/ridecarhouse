@@ -6,13 +6,11 @@ Project Source Code Link: [github repo](https://github.com/ProgrammingHeroWC4/wa
 
 Project Live Link: [Live Link](https://ride-carhouse.web.app/)
 
-### `npm start`
+## Server Site Links:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#Project Source Code Link: [github repo](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-ahmmedrasel-dev.git).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#Project Live Link: [Live Link](https://intense-mesa-21235.herokuapp.com/)
 
 ### `npm test`
 
