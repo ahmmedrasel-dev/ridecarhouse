@@ -8,7 +8,7 @@ const useCars = () => {
 
     async function getCar() {
       try {
-        const response = await axios.get('https://intense-mesa-21235.herokuapp.com/car');
+        const response = await axios.get('https://ridecarhouse.herokuapp.com/car');
         setCars(response.data);
       } catch (error) {
         console.error(error);

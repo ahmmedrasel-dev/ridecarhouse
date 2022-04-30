@@ -20,22 +20,19 @@ const AddItem = () => {
   const handleInput = event => {
     carItem[event.target.name] = event.target.value;
   }
-
   const handleForm = event => {
     event.preventDefault();
     let newCarItem = { ...carItem, email: user.email };
 
     try {
       const postData = async () => {
-        const { data } = await axios.post('https://intense-mesa-21235.herokuapp.com/add-car', newCarItem);
+        const { data } = await axios.post('https://ridecarhouse.herokuapp.com/add-car', newCarItem);
         if (!data.success) {
           return toast.error(data.error)
         }
         toast.success(data.message)
-        event.form.reset()
       }
       postData()
-
     }
     catch (error) {
       toast.error(error.message)
