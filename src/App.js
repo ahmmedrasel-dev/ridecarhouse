@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddItem from './pages/AddItem/AddItem';
 import Footer from './pages/Shared/Footer/Footer';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/add-item' element={<AddItem></AddItem>}></Route>
         <Route path='/manage-item'></Route>
         <Route path='/my-item'></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />
