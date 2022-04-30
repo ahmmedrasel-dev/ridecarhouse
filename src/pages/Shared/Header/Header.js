@@ -29,13 +29,16 @@ const Header = () => {
                   user ?
                     <div className='flex justify-between'>
                       <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
-                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+
                       <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
                       <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
                       <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
                     </div>
                     :
-                    <CustomLink to='/login' className="text-white">Login</CustomLink >
+                    <div className='flex'>
+                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+                      <CustomLink to='/login' className="text-white">Login</CustomLink >
+                    </div>
                 }
               </div>
             </div>
@@ -98,40 +101,18 @@ const Header = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a
-                  href="#"
-                  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Dashboard
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Team
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Projects
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Calendar
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Reports
-                </a>
+                {
+                  user ?
+                    <div className='flex flex-col justify-between gap-8'>
+                      <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
+                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+                      <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
+                      <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
+                      <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
+                    </div>
+                    :
+                    <CustomLink to='/login' className="text-white">Login</CustomLink >
+                }
               </div>
             </div>
           )}

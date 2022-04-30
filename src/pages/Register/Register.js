@@ -124,7 +124,7 @@ const Register = () => {
             registerError?.confirmPassword && <strong className='text-red-500'>{registerError.confirmPassword}</strong>
           }
 
-          <button className='w-full bg-sky-500 p-3 mb-4 rounded-md text-xl text-white'>Login</button>
+          <button className='w-full bg-sky-500 p-3 mb-4 rounded-md text-xl text-white'>Register</button>
           <p className='text-center mb-2'>Already Have an account? <Link className='underline text-blue-400' to='/login'>Login.</Link></p>
         </form>
         <div className='flex justify-center mb-12'>
