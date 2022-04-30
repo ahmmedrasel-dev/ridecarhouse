@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
+import CustomLink from '../../CustomLink/CustomLink';
+import logo from '../../../images/logo.png'
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -16,24 +18,24 @@ const Header = () => {
   return (
     <>
       <nav className="bg-sky-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <Link to='/'>Logo</Link>
+              <Link to='/'><img src={logo} alt="" /></Link>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {
                   user ?
-                    <div>
-                      <Link to='/add-item' className="text-white px-4">Add Item</Link>
-                      <Link to='/manage-item' className="text-white px-4">Manage Item</Link>
-                      <Link to='/my-item' className="text-white px-4">My Item</Link>
-                      <Link to='/' className="text-white px-4">{user.displayName}</Link>
-                      <Link to='/login' className="text-white px-4" onClick={logOut}>Logout</Link>
+                    <div className='flex justify-between'>
+                      <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
+                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+                      <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
+                      <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
+                      <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
                     </div>
                     :
-                    <Link to='/login' className="text-white">Login</Link>
+                    <CustomLink to='/login' className="text-white">Login</CustomLink >
                 }
               </div>
             </div>

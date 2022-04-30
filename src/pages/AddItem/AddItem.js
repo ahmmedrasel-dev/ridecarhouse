@@ -52,7 +52,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="email" value={user?.email} readOnly disabled />
+              <input className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-skye-500" id="inline-full-name" type="email" value={user?.email} readOnly disabled />
             </div>
           </div>
 
@@ -63,7 +63,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder='Toyta Colora 2018' onBlur={event => handleInput(event)} name='car_name' />
+              <input className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-full-name" type="text" placeholder='Toyta Colora 2018' onBlur={event => handleInput(event)} name='car_name' />
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="text" placeholder="Image Url" onBlur={event => handleInput(event)} name='picture' />
+              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-password" type="text" placeholder="Image Url" onBlur={event => handleInput(event)} name='picture' />
             </div>
           </div>
 
@@ -85,7 +85,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="number" placeholder="131323" onBlur={event => handleInput(event)} name='price' />
+              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-password" type="text" placeholder="131323" onBlur={event => handleInput(event)} name='price' />
             </div>
           </div>
 
@@ -96,7 +96,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="number" placeholder="12" onBlur={event => handleInput(event)} name='quantity' />
+              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-password" type="text" placeholder="12" onBlur={event => handleInput(event)} name='quantity' />
             </div>
           </div>
 
@@ -108,7 +108,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="text" placeholder="Toyta" onBlur={event => handleInput(event)} name='brand' />
+              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-password" type="text" placeholder="Toyota" onBlur={event => handleInput(event)} name='brand' />
             </div>
           </div>
 
@@ -119,7 +119,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="text" placeholder="Habibur Rahman" onBlur={event => handleInput(event)} name='suplier' />
+              <input className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" id="inline-password" type="text" placeholder="Habibur Rahman" onBlur={event => handleInput(event)} name='suplier' />
             </div>
           </div>
 
@@ -130,7 +130,7 @@ const AddItem = () => {
               </label>
             </div>
             <div className="md:w-5/6">
-              <textarea className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" onBlur={event => handleInput(event)} name='product_details'>
+              <textarea className="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-6 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" onBlur={event => handleInput(event)} name='product_details'>
               </textarea>
             </div>
           </div>
@@ -138,7 +138,7 @@ const AddItem = () => {
           <div className="md:flex md:items-center">
             <div className="md:w-1/3"></div>
             <div className="md:w-2/3">
-              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-2/4" type="submit">
+              <button className="shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-2/4" type="submit">
                 Add Item
               </button>
             </div>
