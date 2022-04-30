@@ -27,7 +27,7 @@ const AddItem = () => {
 
     try {
       const postData = async () => {
-        const { data } = await axios.post('http://localhost:5000/add-car', newCarItem);
+        const { data } = await axios.post('https://ride-carhouse.web.app/add-item', newCarItem);
         if (!data.success) {
           return toast.error(data.error)
         }
