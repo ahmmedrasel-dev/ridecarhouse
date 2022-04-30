@@ -30,7 +30,9 @@ const Register = () => {
     user,
     loading,
     hookError,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, {
+    sendEmailVerification: true
+  });
 
   const handleEmail = event => {
     const emailValidTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,9 +40,9 @@ const Register = () => {
     console.log(validEmail)
     if (validEmail) {
       setRegisterInfo({ ...registerInfo, email: event.target.value })
-      setRegisterError({ ...registerError, emailError: '' })
+      setRegisterError({ ...registerError, email: '' })
     } else {
-      setRegisterError({ ...registerError, emailError: 'Invalid Email.' })
+      setRegisterError({ ...registerError, email: 'Invalid Email.' })
       setRegisterInfo({ ...registerInfo, email: '' })
     }
   }
@@ -50,33 +52,27 @@ const Register = () => {
     const strongPassword = passwordTest.test(e.target.value);
     if (strongPassword) {
       setRegisterInfo({ ...registerInfo, password: e.target.value })
-      setRegisterError({ ...registerError, passwordError: '' })
+      setRegisterError({ ...registerError, password: '' })
     } else {
-      setRegisterError({ ...registerError, passwordError: 'Your Passowrd is to week.' })
+      setRegisterError({ ...registerError, password: 'Your Passowrd is to week.' })
       setRegisterInfo({ ...registerInfo, password: '' })
     }
   }
 
 
   const handleComfirmPassword = e => {
-    const confirmPass = e.target.value
-    if (registerInfo.password !== confirmPass) {
-      setRegisterError({ ...registerError, confirmPasswordError: 'Confirmation Password not Match.' })
+
+    if (registerInfo.password !== e.target.value) {
+      setRegisterError({ ...registerError, confirmPassword: 'Confirmation Password not Match.' })
     } else {
       setRegisterInfo({ ...registerInfo, confirmPassword: e.target.value })
-      setRegisterError({ ...registerError, confirmPasswordError: '' })
+      setRegisterError({ ...registerError, confirmPassword: '' })
     }
   }
 
   const handleSubmit = e => {
-    e.preventDefault();
-
     e.preventDefault()
-    if (registerInfo.password !== registerInfo.confirmPassword) {
-      toast.error('Confirm Password not match.')
-    } else {
-      createUserWithEmailAndPassword(registerInfo.email, registerInfo.password)
-    }
+    createUserWithEmailAndPassword(registerInfo.email, registerInfo.password)
   }
 
   if (user) {
@@ -117,12 +113,12 @@ const Register = () => {
             registerError?.email && <strong className='text-red-500'>{registerError.email}</strong>
           }
 
-          <input className='block w-full p-3 my-4 rounded-md text-xl' type="password" name="" id="" placeholder='Password' onBlur={handlePassword} />
+          <input className='block w-full p-3 my-4 rounded-md text-xl' type="password" name="" id="" placeholder='Password' onChange={handlePassword} />
           {
             registerError?.password && <strong className='text-red-500'>{registerError.password}</strong>
           }
 
-          <input className='block w-full p-3 my-4 rounded-md text-xl' type="password" name="" id="" placeholder='Conformation Password' onBlue={handleComfirmPassword} />
+          <input className='block w-full p-3 my-4 rounded-md text-xl' type="password" name="" id="" placeholder='Conformation Password' onChange={handleComfirmPassword} />
 
           {
             registerError?.confirmPassword && <strong className='text-red-500'>{registerError.confirmPassword}</strong>
