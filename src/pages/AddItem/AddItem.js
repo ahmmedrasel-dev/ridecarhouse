@@ -27,7 +27,7 @@ const AddItem = () => {
 
     try {
       const postData = async () => {
-        const { data } = await axios.post('https://intense-mesa-21235.herokuapp.com/add-item', newCarItem);
+        const { data } = await axios.post('https://intense-mesa-21235.herokuapp.com/add-car', newCarItem);
         if (!data.success) {
           return toast.error(data.error)
         }
