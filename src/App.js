@@ -9,8 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddItem from './pages/AddItem/AddItem';
 import Footer from './pages/Shared/Footer/Footer';
 import NotFound from './pages/NotFound/NotFound';
-import RequireAuth from './pages/RequireAuth/RequireAuth';
 import CarDetails from './pages/CarDetails/CarDetails';
+import RequireAuth from './pages/Shared/RequireAuth/RequireAuth';
+import Myitems from './pages/Myitems/Myitems';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/manage-item'></Route>
-        <Route path='/my-item'></Route>
+        <Route path='/my-item' element={<Myitems></Myitems>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

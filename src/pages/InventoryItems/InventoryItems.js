@@ -3,13 +3,16 @@ import useCars from '../../Hooks/useCars';
 import Car from '../Car/Car';
 
 const InventoryItems = () => {
-  const [cars] = useCars()
+  const [cars, setCars, loading, setLoading] = useCars()
+  const carsHome = cars.slice(0, 6);
   return (
     <div className='grid lg:grid-cols-3 gap-4 sm:grid-cols-1'>
       {
-        cars.map(car => <Car
+        carsHome.map(car => <Car
           key={car._id}
-          car={car}></Car>)
+          car={car}
+          loading={loading}
+        ></Car>)
       }
     </div>
   );

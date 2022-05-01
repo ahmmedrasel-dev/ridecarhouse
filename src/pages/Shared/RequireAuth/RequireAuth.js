@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const RequireAuth = ({ children }) => {
   let [user, loading] = useAuthState(auth);

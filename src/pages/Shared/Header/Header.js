@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
-import CustomLink from '../../CustomLink/CustomLink';
+import CustomLink from '../CustomLink/CustomLink';
 import logo from '../../../images/logo.png'
 
 const Header = () => {
@@ -14,6 +14,7 @@ const Header = () => {
   const logOut = () => {
     signOut(auth)
   }
+
 
   return (
     <>

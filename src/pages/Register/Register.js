@@ -76,6 +76,7 @@ const Register = () => {
   }
 
   if (user) {
+    navigate('/');
     toast.success('User Create Successfully.')
   }
 
