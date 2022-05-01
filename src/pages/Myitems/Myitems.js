@@ -9,7 +9,7 @@ const Myitems = () => {
   const email = user?.email
 
   useEffect(() => {
-    const url = `http://localhost:5000/myitems?email=${email}`;
+    const url = `https://ridecarhouse.herokuapp.com/myitems?email=${email}`;
     try {
       const getData = async () => {
         const { data } = await axios.get(url);
