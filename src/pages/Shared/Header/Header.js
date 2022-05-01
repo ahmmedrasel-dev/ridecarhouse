@@ -26,6 +26,7 @@ const Header = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
+                <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
                 {
                   user ?
                     <div className='flex justify-between'>
@@ -37,7 +38,6 @@ const Header = () => {
                     </div>
                     :
                     <div className='flex'>
-                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
                       <CustomLink to='/login' className="text-white">Login</CustomLink >
                     </div>
                 }
@@ -102,17 +102,20 @@ const Header = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
                 {
                   user ?
                     <div className='flex flex-col justify-between gap-8'>
                       <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
-                      <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
                       <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
                       <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
                       <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
+
                     </div>
                     :
-                    <CustomLink to='/login' className="text-white">Login</CustomLink >
+                    <div className='flex'>
+                      <CustomLink to='/login' className="text-white">Login</CustomLink >
+                    </div>
                 }
               </div>
             </div>

@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound/NotFound';
 import CarDetails from './pages/CarDetails/CarDetails';
 import RequireAuth from './pages/Shared/RequireAuth/RequireAuth';
 import Myitems from './pages/Myitems/Myitems';
+import ManageItem from './pages/ManageItem/ManageItem';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <CarDetails></CarDetails>
           </RequireAuth>
         }></Route>
-        <Route path='/manage-item'></Route>
+        <Route path='/manage-item' element={<ManageItem></ManageItem>}></Route>
         <Route path='/my-item' element={<Myitems></Myitems>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
