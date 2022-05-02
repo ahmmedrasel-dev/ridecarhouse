@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import slide1 from '../../images/banner1.png'
-import { FcGoogle } from 'react-icons/fc';
 import useToken from '../../Hooks/useToken';
+import SocialLogin from '../Login/SocialLogin';
 
 const Register = () => {
-  const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
-
   let navigate = useNavigate();
-  let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
   const [registerInfo, setRegisterInfo] = useState({
     email: '',
@@ -34,7 +30,7 @@ const Register = () => {
     sendEmailVerification: true
   });
 
-  const [token] = useToken(user || googleUser);
+  const [token] = useToken(user);
 
   const handleEmail = event => {
     const emailValidTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,7 +59,6 @@ const Register = () => {
 
 
   const handleComfirmPassword = e => {
-
     if (registerInfo.password !== e.target.value) {
       setRegisterError({ ...registerError, confirmPassword: 'Confirmation Password not Match.' })
     } else {
@@ -82,23 +77,11 @@ const Register = () => {
     toast.success('User Create Successfully.')
   }
 
-  const handleGogleLogin = () => {
-    signInWithGoogle(registerInfo.email, registerInfo.password);
-  }
-
-  if (token) {
-    toast.success('Sign in User:', googleUser);
-    navigate(from, { replace: true });
-  }
-
   useEffect(() => {
-    if (googleError) {
-      toast.error(googleError.message)
-    }
     if (hookError) {
       toast.error(hookError.message)
     }
-  }, [googleError, hookError])
+  }, [hookError])
 
   return (
     <div className='md:p-20' style={{ backgroundImage: `url(${slide1})`, backgroundPosition: "center", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -130,9 +113,8 @@ const Register = () => {
           <button className='w-full bg-sky-500 p-3 mb-4 rounded-md text-xl text-white'>Register</button>
           <p className='text-center mb-2'>Already Have an account? <Link className='underline text-blue-400' to='/login'>Login.</Link></p>
         </form>
-        <div className='flex justify-center mb-12'>
-          <button className='bg-white border w-3/4 p-3 rounded-full' onClick={handleGogleLogin}><FcGoogle className='inline text-2xl mr-3' />Continue with Google</button>
-        </div>
+
+        <SocialLogin></SocialLogin>
 
       </div>
     </div>

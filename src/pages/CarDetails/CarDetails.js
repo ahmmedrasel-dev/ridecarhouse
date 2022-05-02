@@ -8,18 +8,35 @@ const CarDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState({})
 
+  const handleDeliver = (id, quanity) => {
+    try {
+      const postData = async () => {
+        const newQuanity = quanity - 1;
+        console.log(newQuanity)
+        const url = `http://localhost:5000/delivered/${id}`;
+        const { data } = await axios.put(url, { newQuanity })
+        setCar(data);
+        toast.success('Dalivery Complate.')
+      }
+      postData();
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+  }
+
   useEffect(() => {
     try {
       const getCar = async () => {
-        const response = await axios.get(`https://ridecarhouse.herokuapp.com/car/${id}`);
-        setCar(response.data);
+        const { data } = await axios.get(`https://ridecarhouse.herokuapp.com/car/${id}`);
+        setCar(data);
       }
       getCar()
     }
     catch (error) {
       toast.error(error.message)
     }
-  }, [])
+  }, [car])
   return (
 
     <>
@@ -58,7 +75,7 @@ const CarDetails = () => {
                   <td className='col-span-2 bg-gray-100 p-2'>{car.product_details}</td>
                 </tr>
                 <tr className='grid grid-cols-3 px-4 py-2 gap-2'>
-                  <td className='text-center col-span-3'><button className='shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-12 rounded'>Delivered</button></td>
+                  <td className='text-center col-span-3'><button className='shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-12 rounded' onClick={() => handleDeliver(car._id, car.quantity)}>Delivered</button></td>
                 </tr>
               </tbody>
             </table>

@@ -21,7 +21,7 @@ const useCars = () => {
 
   }, [])
 
-  return [cars, setCars, loading, setLoading]
+  return [cars, loading]
 };
 
 export default useCars;

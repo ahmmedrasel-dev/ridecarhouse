@@ -15,7 +15,6 @@ const Header = () => {
     signOut(auth)
   }
 
-
   return (
     <>
       <nav className="bg-sky-500">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Car.css';
 
 const Car = ({ car, loading }) => {
@@ -37,7 +37,9 @@ const Car = ({ car, loading }) => {
             <h2 className='brandName text-center uppercase text-4xl'>{brand}</h2>
             <hr />
             <img className='py-4' src={picture} alt="" />
-            <p className='text-4xl uppercase'>Price: <span className='text-sky-500 text-4xl'>${price}</span></p>
+            <div>
+              <h2 className='text-4xl uppercase'>Price: <span className='text-sky-500 text-4xl'>${price}</span></h2>
+            </div>
             <hr />
             <div className='py-4'>
               <p>Model Name: {car_name}</p>
@@ -46,7 +48,7 @@ const Car = ({ car, loading }) => {
             </div>
             <hr />
             <div className='py-4'>
-              <p title={product_details}>{product_details.slice(0, 120) + '...'}</p>
+              <p title={product_details}> {product_details.slice(0, 120) + '...'} </p>
             </div>
             <hr />
             <button onClick={() => navigateToDetail(_id)} className='bg-sky-500 w-full p-2 text-white uppercase rounded mt-4'>Update</button>

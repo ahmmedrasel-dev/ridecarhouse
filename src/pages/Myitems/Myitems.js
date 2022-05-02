@@ -12,6 +12,17 @@ const Myitems = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate()
 
+  const handleDelete = async id => {
+    const confirm = window.confirm('Are you sure you want to delete?')
+    if (confirm) {
+      const { data } = await axios.delete(`https://ridecarhouse.herokuapp.com/car/${id}`);
+      if (data.deletedCount > 0) {
+        const remaingItem = items.filter(car => car._id !== id);
+        setItems(remaingItem)
+      }
+    }
+  }
+
 
   useEffect(() => {
     setLoading(true);
@@ -83,7 +94,7 @@ const Myitems = () => {
                       <td className="border text-center">{item.quantity}</td>
                       <td className="border text-center">{item.price}</td>
                       <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-red-600 py-2 px-4 text-white rounded-md'>Delete</button></td>
+                      <td className='border text-center'><button className='bg-red-600 py-2 px-4 text-white rounded-md' onClick={handleDelete}>Delete</button></td>
                     </tr>
                   ))
                 }
