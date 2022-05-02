@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import slide1 from '../../images/banner1.png'
+import axios from 'axios';
 
 
 const Login = () => {
@@ -26,19 +27,23 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
 
   // Sign In with Email And Password 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     if (email.length !== 0 && password.length) {
-      signInWithEmailAndPassword(email, password)
+      await signInWithEmailAndPassword(email, password)
+      const { data } = await axios.post('http://localhost:5000/login', { email })
+      localStorage.setItem('accessToken', data)
+      navigate(from, { replace: true });
+      toast.success('User Login Successfullay');
     } else {
       toast.error('Email & Password is empaty.')
     }
   }
 
-  if (user) {
-    toast.success('User Login Successfullay');
-    navigate(from, { replace: true });
-  }
+  // if (user) {
+
+  //   navigate(from, { replace: true });
+  // }
 
   // Sign In with Google.
 
@@ -75,7 +80,7 @@ const Login = () => {
 
           <form className='sm:w-4/4 md:w-3/4 mx-auto mt-4' onSubmit={handleSubmit}>
             <input className='block w-full p-3 rounded-md text-xl' type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-            <input className='block w-full p-3 my-4 rounded-md text-xl' type="current-password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+            <input className='block w-full p-3 my-4 rounded-md text-xl' type="current-password" placeholder='Password' onBlur={(e) => setPassword(e.target.value)} />
             <button className='w-full bg-sky-500 p-3 mb-4 rounded-md text-xl text-white'>Login</button>
 
             <p className='text-center mb-2'>Don't have Account? <Link className='underline text-blue-400' to='/register'>Create an account.</Link></p>

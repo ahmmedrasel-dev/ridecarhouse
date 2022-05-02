@@ -12,11 +12,15 @@ const Myitems = () => {
 
   useEffect(() => {
     setLoading(true);
-    const email = user?.email
-    const url = `https://ridecarhouse.herokuapp.com/myitems?email=${email}`;
     try {
       const getData = async () => {
-        const { data } = await axios.get(url);
+        const email = user?.email
+        const url = `https://ridecarhouse.herokuapp.com/myitems?email=${email}`;
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
         setItems(data)
         setLoading(false);
       }
@@ -25,7 +29,7 @@ const Myitems = () => {
     catch (error) {
       toast.error(error.message)
     }
-  }, [])
+  }, [user])
 
   return (
     <>
