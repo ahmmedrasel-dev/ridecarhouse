@@ -13,7 +13,7 @@ const CarDetails = () => {
       const postData = async () => {
         const newQuanity = quanity - 1;
         console.log(newQuanity)
-        const url = `http://localhost:5000/delivered/${id}`;
+        const url = `https://ridecarhouse.herokuapp.com/delivered/${id}`;
         const { data } = await axios.put(url, { newQuanity })
         setCar(data);
         toast.success('Dalivery Complate.')
