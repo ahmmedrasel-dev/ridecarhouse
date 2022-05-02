@@ -17,8 +17,8 @@ const SocialLogin = () => {
   }
 
   if (token) {
-    toast.success('Sign in User:', googleUser);
     navigate(from, { replace: true });
+    toast.success('Sign in User:', googleUser);
   }
 
   useEffect(() => {

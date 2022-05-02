@@ -1,9 +1,18 @@
+import axios from 'axios';
 import React from 'react';
 import useCars from '../../Hooks/useCars';
 
 
 const ManageItem = () => {
   const [cars, loading] = useCars()
+
+  const handleDelete = id => {
+    const confirm = window.confirm('Are you sure you want to delete?')
+    if (confirm) {
+      const { data } = axios.delete(`http://localhost:5000/car/${id}`);
+    }
+  }
+
 
   return (
     <>
@@ -50,7 +59,7 @@ const ManageItem = () => {
                       <td className="border text-center">{item.quantity}</td>
                       <td className="border text-center">{item.price}</td>
                       <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-red-600 py-2 px-4 text-white rounded-md'>Delete</button></td>
+                      <td className='border text-center'><button className='bg-red-600 py-2 px-4 text-white rounded-md' onClick={() => handleDelete(item._id)}>Delete</button></td>
                     </tr>
                   ))
                 }

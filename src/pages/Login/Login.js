@@ -36,8 +36,8 @@ const Login = () => {
   }
 
   if (token) {
-    toast.success('User Login Successfullay');
     navigate(from, { replace: true });
+    toast.success('User Login Successfullay');
   }
 
 
