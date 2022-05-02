@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import slide1 from '../../images/banner1.png'
-import axios from 'axios';
+import useToken from '../../Hooks/useToken';
+import SocialLogin from './SocialLogin';
 
 
 const Login = () => {
@@ -18,8 +18,7 @@ const Login = () => {
     hookError,
   ] = useSignInWithEmailAndPassword(auth);
 
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-
+  const [token] = useToken(user)
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -31,41 +30,22 @@ const Login = () => {
     e.preventDefault()
     if (email.length !== 0 && password.length) {
       await signInWithEmailAndPassword(email, password)
-      const { data } = await axios.post('http://localhost:5000/login', { email })
-      localStorage.setItem('accessToken', data)
-      navigate(from, { replace: true });
-      toast.success('User Login Successfullay');
     } else {
       toast.error('Email & Password is empaty.')
     }
   }
 
-  // if (user) {
-
-  //   navigate(from, { replace: true });
-  // }
-
-  // Sign In with Google.
-
-  const handleGogleLogin = () => {
-    signInWithGoogle(email, password);
-  }
-
-  if (googleUser) {
-    toast.success('Sign in User:', googleUser);
+  if (token) {
+    toast.success('User Login Successfullay');
     navigate(from, { replace: true });
   }
 
+
   useEffect(() => {
-    if (googleError) {
-      toast.error(googleError.message)
-    }
     if (hookError) {
       toast.error(hookError.message)
     }
-  }, [googleError, hookError])
-
-
+  }, [hookError])
 
   return (
     <>
@@ -82,14 +62,12 @@ const Login = () => {
             <input className='block w-full p-3 rounded-md text-xl' type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
             <input className='block w-full p-3 my-4 rounded-md text-xl' type="current-password" placeholder='Password' onBlur={(e) => setPassword(e.target.value)} />
             <button className='w-full bg-sky-500 p-3 mb-4 rounded-md text-xl text-white'>Login</button>
+            <p className='text-center mb-2'> <Link className='underline text-blue-400' to='/reset-password'>Forget Password?</Link></p>
 
             <p className='text-center mb-2'>Don't have Account? <Link className='underline text-blue-400' to='/register'>Create an account.</Link></p>
 
           </form>
-          <div className='flex justify-center mb-12'>
-            <button className='bg-white border w-3/4 p-3 rounded-full' onClick={handleGogleLogin}><FcGoogle className='inline text-2xl mr-3' />Continue with Google</button>
-          </div>
-
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </>

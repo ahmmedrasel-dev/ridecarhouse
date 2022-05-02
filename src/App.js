@@ -13,6 +13,7 @@ import CarDetails from './pages/CarDetails/CarDetails';
 import RequireAuth from './pages/Shared/RequireAuth/RequireAuth';
 import Myitems from './pages/Myitems/Myitems';
 import ManageItem from './pages/ManageItem/ManageItem';
+import ResetPassword from './pages/RestPassword/ResetPassword';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         }></Route>
         <Route path='/manage-item' element={<ManageItem></ManageItem>}></Route>
         <Route path='/my-item' element={<Myitems></Myitems>}></Route>
+        <Route path='/reset-password' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

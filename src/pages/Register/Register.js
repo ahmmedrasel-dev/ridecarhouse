@@ -5,9 +5,10 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import slide1 from '../../images/banner1.png'
 import { FcGoogle } from 'react-icons/fc';
+import useToken from '../../Hooks/useToken';
 
 const Register = () => {
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -28,11 +29,12 @@ const Register = () => {
   const [
     createUserWithEmailAndPassword,
     user,
-    loading,
     hookError,
   ] = useCreateUserWithEmailAndPassword(auth, {
     sendEmailVerification: true
   });
+
+  const [token] = useToken(user || googleUser);
 
   const handleEmail = event => {
     const emailValidTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,7 +77,7 @@ const Register = () => {
     createUserWithEmailAndPassword(registerInfo.email, registerInfo.password)
   }
 
-  if (user) {
+  if (token) {
     navigate('/');
     toast.success('User Create Successfully.')
   }
@@ -84,7 +86,7 @@ const Register = () => {
     signInWithGoogle(registerInfo.email, registerInfo.password);
   }
 
-  if (googleUser) {
+  if (token) {
     toast.success('Sign in User:', googleUser);
     navigate(from, { replace: true });
   }

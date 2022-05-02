@@ -3,7 +3,7 @@ import useCars from '../../Hooks/useCars';
 
 
 const ManageItem = () => {
-  const [cars, setCars, loading, setLoading] = useCars()
+  const [cars, loading] = useCars()
 
   return (
     <>

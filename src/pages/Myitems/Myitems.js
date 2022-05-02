@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -8,6 +10,7 @@ const Myitems = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [user] = useAuthState(auth);
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const Myitems = () => {
     try {
       const getData = async () => {
         const email = user?.email
-        const url = `https://ridecarhouse.herokuapp.com/myitems?email=${email}`;
+        const url = `http://localhost:5000/myitems?email=${email}`;
         const { data } = await axios.get(url, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -27,8 +30,13 @@ const Myitems = () => {
       getData();
     }
     catch (error) {
-      toast.error(error.message)
+      console.log(error)
+      if (error.response.status === 401 || error.response.status === 403) {
+        signOut(auth);
+        navigate('/login')
+      }
     }
+
   }, [user])
 
   return (
