@@ -14,8 +14,7 @@ const useCars = () => {
         setCars(response.data);
         setLoading(false)
       } catch (error) {
-
-        console.error(error);
+        console.error(error.message);
       }
     }
     getCar()

@@ -6,7 +6,6 @@ const useToken = user => {
 
   useEffect(() => {
     const getToken = async () => {
-      console.log(user)
       const email = user?.user?.email
       if (email) {
         const { data } = await axios.post('https://ridecarhouse.herokuapp.com/login', { email })
