@@ -11,6 +11,10 @@ const Myitems = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate()
 
+  const navigateToDetail = id => {
+    navigate(`/car/${id}`);
+  }
+
   const handleDelete = async id => {
     const confirm = window.confirm('Are you sure you want to delete?')
     if (confirm) {
@@ -93,7 +97,7 @@ const Myitems = () => {
                       <td className="border text-center">{item.quantity}</td>
                       <td className="border text-center">{item.price}</td>
                       <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-red-600 py-2 px-4 text-white rounded-md' onClick={handleDelete}>Delete</button></td>
+                      <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} >View</button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}>Delete</button></td>
                     </tr>
                   ))
                 }
