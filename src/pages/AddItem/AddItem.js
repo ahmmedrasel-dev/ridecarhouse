@@ -30,6 +30,7 @@ const AddItem = () => {
         if (!data.success) {
           return toast.error(data.error)
         }
+        event.target.reset();
         toast.success(data.message)
       }
       postData()

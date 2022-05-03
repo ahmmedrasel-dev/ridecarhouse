@@ -6,6 +6,7 @@ import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 import logo from '../../../images/logo.png'
+import './Header.css'
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -25,19 +26,19 @@ const Header = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+                <CustomLink to='/manage-item' className="text-white mx-4 uppercase custom-menu-itm">Manage Inventory</CustomLink>
                 {
                   user ?
                     <div className='flex justify-between'>
-                      <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
+                      <CustomLink to='/add-item' className="text-white mx-4 uppercase custom-menu-itm">Add Item</CustomLink>
 
-                      <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
-                      <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
-                      <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
+                      <CustomLink to='/my-item' className="text-white mx-4 uppercase custom-menu-itm">My Item</CustomLink>
+                      <CustomLink to='/' className="text-white mx-4 uppercase custom-menu-itm">{user.displayName}</CustomLink>
+                      <CustomLink to='/login' className="text-white mx-4 uppercase custom-menu-itm" onClick={logOut}>Logout</CustomLink>
                     </div>
                     :
                     <div className='flex'>
-                      <CustomLink to='/login' className="text-white">Login</CustomLink >
+                      <CustomLink to='/login' className="text-white uppercase">Login</CustomLink >
                     </div>
                 }
               </div>
@@ -101,19 +102,19 @@ const Header = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <CustomLink to='/manage-item' className="text-white mx-4">Manage Item</CustomLink>
+                <CustomLink to='/manage-item' className="text-white mx-4">Manage Inventory</CustomLink>
                 {
                   user ?
                     <div className='flex flex-col justify-between gap-8'>
-                      <CustomLink to='/add-item' className="text-white mx-4">Add Item</CustomLink>
-                      <CustomLink to='/my-item' className="text-white mx-4">My Item</CustomLink>
-                      <CustomLink to='/' className="text-white mx-4">{user.displayName}</CustomLink>
-                      <CustomLink to='/login' className="text-white mx-4" onClick={logOut}>Logout</CustomLink>
+                      <CustomLink to='/add-item' className="text-white mx-4 custom-menu-itm uppercase">Add Item</CustomLink>
+                      <CustomLink to='/my-item' className="text-white mx-4 custom-menu-itm uppercase">My Item</CustomLink>
+                      <CustomLink to='/' className="text-white mx-4 custom-menu-itm uppercase">{user.displayName}</CustomLink>
+                      <CustomLink to='/login' className="text-white mx-4 custom-menu-itm uppercase" onClick={logOut}>Logout</CustomLink>
 
                     </div>
                     :
                     <div className='flex'>
-                      <CustomLink to='/login' className="text-white">Login</CustomLink >
+                      <CustomLink to='/login' className="text-white uppercase custom-menu-itm">Login</CustomLink >
                     </div>
                 }
               </div>

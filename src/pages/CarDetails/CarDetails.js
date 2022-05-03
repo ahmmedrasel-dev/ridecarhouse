@@ -7,12 +7,12 @@ import './CarDetails.css'
 const CarDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState({})
+  const [quantity, setQuantity] = useState({});
 
   const handleDeliver = (id, quanity) => {
     try {
       const postData = async () => {
         const newQuanity = quanity - 1;
-        console.log(newQuanity)
         const url = `https://ridecarhouse.herokuapp.com/delivered/${id}`;
         const { data } = await axios.put(url, { newQuanity })
         setCar(data);
@@ -25,6 +25,24 @@ const CarDetails = () => {
     }
   }
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    const inputQuantity = event.target.qunatity.value;
+    setQuantity(inputQuantity)
+    try {
+      const postQty = async () => {
+        const url = `https://ridecarhouse.herokuapp.com/add-quanity/${id}?qty=${car.quantity}`
+        const { data } = await axios.put(url, { quantity });
+        event.target.reset();
+        console.log(data.message)
+      }
+      postQty();
+    }
+    catch (error) {
+      toast.error(error.message)
+    }
+
+  }
   useEffect(() => {
     try {
       const getCar = async () => {
@@ -37,8 +55,8 @@ const CarDetails = () => {
       toast.error(error.message)
     }
   }, [car])
-  return (
 
+  return (
     <>
       <div className='container mx-auto my-12 border p-4'>
         <h1 className='text-center underline text-2xl uppercase text-sky-500 mb-8'>Product Details</h1>
@@ -84,7 +102,7 @@ const CarDetails = () => {
 
           <div className='flex flex-col border p-2'>
             <h2 className='text-2xl mb-2'>Add Quanity</h2>
-            <form className='border p-4'>
+            <form className='border p-4' onSubmit={handleSubmit}>
               <label htmlFor="qunatity">Quanity</label>
               <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="text" placeholder="Number of quanity" name='qunatity' id="qunatity" />
               <button className="shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mt-4" type="submit">

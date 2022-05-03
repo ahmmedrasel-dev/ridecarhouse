@@ -1,3 +1,10 @@
 .mobile-nav  a{
   padding: 20px 0;
+
+}
+
+.custom-menu-itm {
+  font-family: 'Poppins',
+  sans-serif;
+  font-weight: 700;
 }
