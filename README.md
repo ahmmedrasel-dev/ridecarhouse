@@ -21,6 +21,8 @@ Project Live Link: [Live Link](https://ride-carhouse.web.app/)
 -  Data Update Form Client Site.
 -  Data Filter Using User Email.
 -  Data Delete.
+-  Client Site Deploy Firebase Hosting
+-  Server Site Deplou In Heroku.
 
 ### Technologu Used
 
@@ -31,3 +33,5 @@ Project Live Link: [Live Link](https://ride-carhouse.web.app/)
 -  Tailwid CSS
 -  React Route
 -  Firebase Hooks Authenticaiton
+-  Firebase Hosting
+-  Heroku
