@@ -25,16 +25,18 @@ const CarDetails = () => {
     }
   }
 
+  const handleQty = e => {
+    const qty = e.target.value;
+    setQuantity(qty)
+  }
   const handleSubmit = event => {
     event.preventDefault();
-    const inputQuantity = event.target.qunatity.value;
-    setQuantity(inputQuantity)
     try {
       const postQty = async () => {
-        const url = `https://ridecarhouse.herokuapp.com/add-quanity/${id}?qty=${car.quantity}`
+        const url = `https://ridecarhouse.herokuapp.com/${id}?oldQty=${car.quantity}`
         const { data } = await axios.put(url, { quantity });
         event.target.reset();
-        console.log(data.message)
+        toast.success(data.message)
       }
       postQty();
     }
@@ -104,7 +106,8 @@ const CarDetails = () => {
             <h2 className='text-2xl mb-2'>Add Quanity</h2>
             <form className='border p-4' onSubmit={handleSubmit}>
               <label htmlFor="qunatity">Quanity</label>
-              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="text" placeholder="Number of quanity" name='qunatity' id="qunatity" />
+              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="text" placeholder="Number of quanity" onChange={handleQty} id="qunatity" />
+
               <button className="shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Add Quantity
               </button>
