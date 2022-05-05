@@ -33,7 +33,7 @@ const CarDetails = () => {
     event.preventDefault();
     try {
       const postQty = async () => {
-        const url = `https://ridecarhouse.herokuapp.com/${id}?oldQty=${car.quantity}`
+        const url = `https://ridecarhouse.herokuapp.com/add-quanity/${id}?oldQty=${car.quantity}`
         const { data } = await axios.put(url, { quantity });
         event.target.reset();
         toast.success(data.message)
