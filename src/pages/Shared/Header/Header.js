@@ -102,10 +102,10 @@ const Header = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <CustomLink to='/manage-item' className="text-white mx-4">Manage Inventory</CustomLink>
+                <CustomLink to='/manage-item' className="text-white mx-4 custom-menu-itm uppercase">Manage Inventory</CustomLink>
                 {
                   user ?
-                    <div className='flex flex-col justify-between gap-8'>
+                    <div className='flex flex-col justify-between gap-2'>
                       <CustomLink to='/add-item' className="text-white mx-4 custom-menu-itm uppercase">Add Item</CustomLink>
                       <CustomLink to='/my-item' className="text-white mx-4 custom-menu-itm uppercase">My Item</CustomLink>
                       <CustomLink to='/' className="text-white mx-4 custom-menu-itm uppercase">{user.displayName}</CustomLink>

@@ -52,7 +52,7 @@ const ManageItem = () => {
             <table className='w-full mt-5 border-2'>
               <thead>
                 <tr>
-                  <th className='border-2 text-left pl-4 bg-sky-500 text-white'>Car Name</th>
+                  <th className='border-2 md:text-left md:pl-4 text-center bg-sky-500 text-white'>Car Name</th>
                   <th className='border-2 py-3 bg-sky-500 text-white'>Brand Name</th>
                   <th className='border-2 py-3 bg-sky-500 text-white'>Quanity</th>
                   <th className='border-2 py-3 bg-sky-500 text-white'>Price</th>
@@ -64,7 +64,7 @@ const ManageItem = () => {
                 {
                   cars.map(item => (
                     <tr key={item._id} >
-                      <td className="border pl-4">{item.car_name}</td>
+                      <td className="border md:pl-4">{item.car_name}</td>
                       <td className="border text-center">{item.brand}</td>
                       <td className="border text-center">{item.quantity}</td>
                       <td className="border text-center">{item.price}</td>

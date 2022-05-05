@@ -21,24 +21,29 @@ const CarDetails = () => {
       postData();
     }
     catch (error) {
-      console.log(error.message)
+      toast.error(error.message)
     }
   }
 
   const handleQty = e => {
-    const qty = e.target.value;
+    const qty = e.target.value
     setQuantity(qty)
   }
   const handleSubmit = event => {
     event.preventDefault();
     try {
-      const postQty = async () => {
-        const url = `https://ridecarhouse.herokuapp.com/add-quanity/${id}?oldQty=${car.quantity}`
-        const { data } = await axios.put(url, { quantity });
-        event.target.reset();
-        toast.success(data.message)
+      if (Object.keys(quantity).length !== 0) {
+        const postQty = async () => {
+          const url = `https://ridecarhouse.herokuapp.com/add-quanity/${id}?oldQty=${car.quantity}`
+          const { data } = await axios.put(url, { quantity });
+          event.target.reset();
+          toast.success(data.message)
+        }
+        postQty();
       }
-      postQty();
+      else {
+        return toast.error('Please Added Your Quantity.')
+      }
     }
     catch (error) {
       toast.error(error.message)
@@ -106,7 +111,7 @@ const CarDetails = () => {
             <h2 className='text-2xl mb-2'>Add Quanity</h2>
             <form className='border p-4' onSubmit={handleSubmit}>
               <label htmlFor="qunatity">Quanity</label>
-              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="text" placeholder="Number of quanity" onChange={handleQty} id="qunatity" />
+              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="number" placeholder="Number of quanity" onChange={handleQty} id="qunatity" min={0} />
 
               <button className="shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Add Quantity

@@ -44,8 +44,8 @@ const AddItem = () => {
   return (
     <>
       <h2 className='text-center uppercase text-4xl mt-4'>Add Items</h2>
-      <div className='w-2/4 bg-slate-200 mx-auto container my-8 py-8 px-12 rounded-lg'>
-        <form className="w-full" onSubmit={handleForm}>
+      <div className='md:w-2/4 w-4/4 bg-slate-200 mx-4 md:mx-auto md:container my-8 py-8 md:px-12 rounded-lg'>
+        <form className="md:w-full mx-4" onSubmit={handleForm}>
           <div className="md:flex md:items-center mb-6 w-6/6">
             <div className="md:w-2/6 text-left">
               <label className="block text-gray-500 font-bold  mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
