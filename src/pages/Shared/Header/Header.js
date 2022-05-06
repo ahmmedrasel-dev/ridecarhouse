@@ -114,7 +114,7 @@ const Header = () => {
                     </div>
                     :
                     <div className='flex'>
-                      <CustomLink to='/login' className="text-white uppercase custom-menu-itm">Login</CustomLink >
+                      <CustomLink to='/login' className="text-white uppercase custom-menu-itm mx-4">Login</CustomLink >
                     </div>
                 }
               </div>

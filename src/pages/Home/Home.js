@@ -1,5 +1,8 @@
 import React from 'react';
 import slide1 from '../../images/slide1.jpg'
+import Agends from '../Agends/Agends';
+import Blogs from '../Blogs/Blogs';
+import Counts from '../Counts/Counts';
 import InventoryItems from '../InventoryItems/InventoryItems';
 import './Home.css'
 
@@ -16,6 +19,15 @@ const Home = () => {
 
       <div className='container mx-auto my-20'>
         <InventoryItems></InventoryItems>
+      </div>
+
+      <div className='container mx-auto my-20'>
+        <Agends></Agends>
+      </div>
+
+      <Counts></Counts>
+      <div className="container mx-auto my-20">
+        <Blogs></Blogs>
       </div>
     </>
 
