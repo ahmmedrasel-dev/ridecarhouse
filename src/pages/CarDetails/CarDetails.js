@@ -85,10 +85,18 @@ const CarDetails = () => {
                   <td className='col-span-2 bg-gray-100 p-2'>{car.brand}</td>
                 </tr>
 
-                <tr className='grid grid-cols-3 px-4 py-2 gap-2'>
-                  <td className='col-span-1 bg-gray-100 p-2'>Total Quantity:</td>
-                  <td className='col-span-2 bg-gray-100 p-2'>{car.quantity}</td>
-                </tr>
+                {
+                  car.quantity === 0 ?
+                    <tr className='grid grid-cols-3 px-4 py-2 gap-2'>
+                      <td className='col-span-1 bg-gray-100 p-2'>Product Status:</td>
+                      <td className='col-span-2 bg-gray-100 p-2 text-red-600'>Out of Stock</td>
+                    </tr>
+                    :
+                    <tr className='grid grid-cols-3 px-4 py-2 gap-2'>
+                      <td className='col-span-1 bg-gray-100 p-2'>Total Quantity:</td>
+                      <td className='col-span-2 bg-gray-100 p-2'>{car.quantity}</td>
+                    </tr>
+                }
 
                 <tr className='grid grid-cols-3 px-4 py-2 gap-2'>
                   <td className='col-span-1 bg-gray-100 p-2'>Price:</td>
@@ -111,7 +119,7 @@ const CarDetails = () => {
             <h2 className='text-2xl mb-2'>Add Quanity</h2>
             <form className='border p-4' onSubmit={handleSubmit}>
               <label htmlFor="qunatity">Quanity</label>
-              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="number" placeholder="Number of quanity" onChange={handleQty} id="qunatity" min={0} />
+              <input className="bg-white  mt-2 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-500" type="number" placeholder="Number of quanity" onChange={handleQty} id="qunatity" min={1} />
 
               <button className="shadow bg-sky-500 hover:bg-sky-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Add Quantity

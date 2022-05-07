@@ -1,11 +1,39 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useCars from '../../Hooks/useCars';
+import { GrAddCircle, GrView } from 'react-icons/gr'
+import { RiDeleteBin6Fill } from 'react-icons/ri'
 
 
 const ManageItem = () => {
-  const [cars, setCars, loading, setLoading] = useCars()
+  const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState(0);
+  const [selectedPage, setSelectedPage] = useState(0);
+  const [pageSize, setPageSize] = useState(5);
+  const [cars, setCars] = useState([]);
+
+
+  useEffect(() => {
+    setLoading(true)
+    const url = `https://ridecarhouse.herokuapp.com/car?page=${selectedPage}&pageSize=${pageSize}`;
+    const getData = async () => {
+      const { data } = await axios.get(url);
+      setCars(data);
+      setLoading(false)
+    }
+    getData();
+  }, [selectedPage, pageSize])
+
+  useEffect(() => {
+    const getPageNumber = async () => {
+      const { data } = await axios.get('https://ridecarhouse.herokuapp.com/car-pages');
+      const totalNumber = data.count;
+      const pages = Math.ceil(totalNumber / 5);
+      setPage(pages);
+    }
+    getPageNumber()
+  }, [])
+
 
   const handleDelete = async id => {
     const confirm = window.confirm('Are you sure you want to delete?')
@@ -47,7 +75,8 @@ const ManageItem = () => {
           :
           <div className='container mx-auto h-screen'>
             <div className='mt-5 text-center'>
-              <h2 className='text-4xl uppercase text-red-500'>My Added Items</h2>
+              <h2 className='text-4xl uppercase text-red-500'>All Inventories Items</h2>
+              <button className='border-2 py-2 px-5 rounded flex items-center hover:bg-sky-500 hover:text-white' onClick={() => navigate('/add-item')}><GrAddCircle className='px-1 text-2xl' />Add Item</button>
             </div>
             <table className='w-full mt-5 border-2'>
               <thead>
@@ -69,12 +98,30 @@ const ManageItem = () => {
                       <td className="border text-center">{item.quantity}</td>
                       <td className="border text-center">{item.price}</td>
                       <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} >View</button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}>Delete</button></td>
+                      <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} ><GrView /></button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}><RiDeleteBin6Fill /></button></td>
                     </tr>
                   ))
+
                 }
               </tbody>
             </table>
+
+            <div className='text-center mt-5'>
+              {
+                [...Array(page).keys()]
+                  .map(number => <button
+                    key={number}
+                    className={selectedPage === number ? 'p-3 bg-sky-500 text-white rounded-md m-2 border-2' : 'p-3 bg-slate-100 m-2 border-2 rounded-md text-sky-500'}
+                    onClick={() => setSelectedPage(number)}
+                  >{number + 1}</button>)
+              }
+
+              <select onChange={e => setPageSize(e.target.value)} className='p-3 rounded-md uppercase border-2'>
+                <option value="5" defaultValue>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
+            </div>
           </div>
       }
     </>

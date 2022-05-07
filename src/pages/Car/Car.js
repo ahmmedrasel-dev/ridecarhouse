@@ -51,7 +51,7 @@ const Car = ({ car, loading }) => {
               <p title={product_details}> {product_details.slice(0, 120) + '...'} </p>
             </div>
             <hr />
-            <button onClick={() => navigateToDetail(_id)} className='bg-sky-500 w-full p-2 text-white uppercase rounded mt-4'>Update</button>
+            <button onClick={() => navigateToDetail(_id)} className='bg-sky-500 w-full p-2 text-white uppercase rounded mt-4'>Manage Items</button>
           </div >
       }
     </>

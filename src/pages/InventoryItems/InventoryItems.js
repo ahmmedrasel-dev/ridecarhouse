@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useCars from '../../Hooks/useCars';
 import Car from '../Car/Car';
 
 const InventoryItems = () => {
   const [cars, loading] = useCars()
   const carsHome = cars.slice(0, 6);
+  const navigate = useNavigate()
   return (
     <div>
       <div className='text-center'>
@@ -18,6 +20,9 @@ const InventoryItems = () => {
             loading={loading}
           ></Car>)
         }
+      </div>
+      <div className='text-center mt-8'>
+        <button onClick={() => navigate('/manage-item')} className='bg-red-500 text-white px-8 py-3 rounded-md uppercase'>Manage Inventory</button>
       </div>
     </div>
   );
