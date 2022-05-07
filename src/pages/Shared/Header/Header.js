@@ -27,6 +27,7 @@ const Header = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <CustomLink to='/manage-item' className="text-white mx-4 uppercase custom-menu-itm">Manage Inventory</CustomLink>
+                <CustomLink to='/blogs' className="text-white mx-4 uppercase custom-menu-itm">Blogs</CustomLink>
                 {
                   user ?
                     <div className='flex justify-between'>
@@ -103,6 +104,8 @@ const Header = () => {
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <CustomLink to='/manage-item' className="text-white mx-4 custom-menu-itm uppercase">Manage Inventory</CustomLink>
+
+                <CustomLink to='/blogs' className="text-white mx-4 custom-menu-itm uppercase">Blogs</CustomLink>
                 {
                   user ?
                     <div className='flex flex-col justify-between gap-2'>
