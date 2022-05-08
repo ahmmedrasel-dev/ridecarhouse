@@ -80,33 +80,35 @@ const ManageItem = () => {
                 <button className='border-2 py-2 px-5 rounded flex md:items-center justify-center hover:bg-sky-500 hover:text-white' onClick={() => navigate('/add-item')}><GrAddCircle className='px-1 text-2xl' />Add Item</button>
               </div>
             </div>
-            <table className='w-full mt-5 border-2 overflow-x-scroll'>
-              <thead>
-                <tr>
-                  <th className='border-2 md:text-left md:pl-4 text-center bg-sky-500 text-white'>Car Name</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Brand Name</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Quanity</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Price</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Images</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  cars.map(item => (
-                    <tr key={item._id} >
-                      <td className="border md:pl-4">{item.car_name}</td>
-                      <td className="border text-center">{item.brand}</td>
-                      <td className="border text-center">{item.quantity}</td>
-                      <td className="border text-center">{item.price}</td>
-                      <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} ><GrView /></button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}><RiDeleteBin6Fill /></button></td>
-                    </tr>
-                  ))
+            <div className='relative overflow-x-scroll shadow-md sm:rounded-lg'>
+              <table className='w-full mt-5 border-2'>
+                <thead>
+                  <tr>
+                    <th className='border-2 md:text-left md:pl-4 text-center bg-sky-500 text-white'>Car Name</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Brand Name</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Quanity</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Price</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Images</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    cars.map(item => (
+                      <tr key={item._id} >
+                        <td className="border md:pl-4">{item.car_name}</td>
+                        <td className="border text-center">{item.brand}</td>
+                        <td className="border text-center">{item.quantity}</td>
+                        <td className="border text-center">{item.price}</td>
+                        <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
+                        <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} ><GrView /></button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}><RiDeleteBin6Fill /></button></td>
+                      </tr>
+                    ))
 
-                }
-              </tbody>
-            </table>
+                  }
+                </tbody>
+              </table>
+            </div>
 
             <div className='text-center mt-5'>
               {

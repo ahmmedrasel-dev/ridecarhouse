@@ -77,32 +77,34 @@ const Myitems = () => {
             <div className='mt-5 text-center'>
               <h2 className='text-4xl uppercase text-red-500'>My Added Items</h2>
             </div>
-            <table className='w-full mt-5 border-2'>
-              <thead>
-                <tr>
-                  <th className='border-2 text-left pl-4 bg-sky-500 text-white'>Car Name</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Brand Name</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Quanity</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Price</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Images</th>
-                  <th className='border-2 py-3 bg-sky-500 text-white'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  items.map(item => (
-                    <tr key={item._id} >
-                      <td className="border pl-4">{item.car_name}</td>
-                      <td className="border text-center">{item.brand}</td>
-                      <td className="border text-center">{item.quantity}</td>
-                      <td className="border text-center">{item.price}</td>
-                      <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
-                      <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} >View</button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}>Delete</button></td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
+            <div className='relative overflow-x-scroll shadow-md sm:rounded-lg'>
+              <table className='w-full mt-5 border-2'>
+                <thead>
+                  <tr>
+                    <th className='border-2 text-left pl-4 bg-sky-500 text-white'>Car Name</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Brand Name</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Quanity</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Price</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Images</th>
+                    <th className='border-2 py-3 bg-sky-500 text-white'>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    items.map(item => (
+                      <tr key={item._id} >
+                        <td className="border pl-4">{item.car_name}</td>
+                        <td className="border text-center">{item.brand}</td>
+                        <td className="border text-center">{item.quantity}</td>
+                        <td className="border text-center">{item.price}</td>
+                        <td className="border text-center"><img className='w-20 mx-auto' src={item.picture} alt="" /></td>
+                        <td className='border text-center'><button className='bg-green-600 py-2 px-4 text-white rounded-md m-2' onClick={() => navigateToDetail(item._id)} >View</button><button className='bg-red-600 py-2 px-4 text-white rounded-md m-2' onClick={() => { handleDelete(item._id) }}>Delete</button></td>
+                      </tr>
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
       }
     </>
