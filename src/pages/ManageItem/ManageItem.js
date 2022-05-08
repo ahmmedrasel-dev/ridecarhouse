@@ -73,7 +73,7 @@ const ManageItem = () => {
           </div >
 
           :
-          <div className='container mx-auto md:h-82'>
+          <div className='container mx-auto md:h-90'>
             <div className='mt-5 text-center'>
               <h2 className='md:text-4xl text-2xl uppercase text-red-500'>All Inventories Items</h2>
               <div className='flex justify-center'>
