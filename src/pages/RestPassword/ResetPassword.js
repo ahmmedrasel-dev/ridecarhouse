@@ -10,15 +10,15 @@ const ResetPassword = () => {
     const email = e.target.value;
     setEmail(email)
   }
+
   const handleForm = async event => {
     event.preventDefault();
     try {
-      console.log(email)
       if (email.length === 0) {
-        toast.error('Rest Password Link sent to your Email!')
-      } else {
-        await sendPasswordResetEmail(email)
+        toast.error('Plase Add your Email!')
       }
+      await sendPasswordResetEmail(email);
+      toast.success('Email Send !')
     }
     catch (error) {
       toast.error(error.message)
@@ -29,15 +29,12 @@ const ResetPassword = () => {
     try {
       if (error) {
         toast.error(error.message)
-      } else {
-        toast.success('Rest Password Link sent to your Email!')
       }
     }
     catch (error) {
       toast.error(error.message)
     }
   }, [error])
-
 
   return (
     <div className='flex justify-center items-center h-screen'>
