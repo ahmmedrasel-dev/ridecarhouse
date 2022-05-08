@@ -1,4 +1,5 @@
 import React from 'react';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Blogs = () => {
   return (
@@ -6,7 +7,7 @@ const Blogs = () => {
       <div className='text-center'>
         <h2 className='text-4xl mb-8 text-sky-500 uppercase border-2 inline-block p-3 rounded-md'>Our Blogs</h2>
       </div>
-
+      <PageTitle title={'Blog'}></PageTitle>
       <div className="grid lg:grid-cols-3 gap-6 sm:grid-cols-1 my-8">
         <div className='bg-slate-100 p-4 rounded-lg drop-shadow-md'>
           <p className='font-medium'>Differeant between Javascript and Node Js?</p>

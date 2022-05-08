@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GrAddCircle, GrView } from 'react-icons/gr'
 import { RiDeleteBin6Fill } from 'react-icons/ri'
+import { Helmet } from 'react-helmet-async';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 
 const ManageItem = () => {
@@ -74,6 +76,7 @@ const ManageItem = () => {
 
           :
           <div className='container mx-auto md:h-90'>
+            <PageTitle title="Manage Items"></PageTitle>
             <div className='mt-5 text-center'>
               <h2 className='md:text-4xl text-2xl uppercase text-red-500'>All Inventories Items</h2>
               <div className='flex justify-center'>

@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import slide1 from '../../images/banner1.png'
 import useToken from '../../Hooks/useToken';
 import SocialLogin from './SocialLogin';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -49,6 +50,9 @@ const Login = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Login | Ride-carhouse Inventory managment</title>
+      </Helmet>
 
       <div className='md:p-20' style={{ backgroundImage: `url(${slide1})`, backgroundPosition: "center", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
 

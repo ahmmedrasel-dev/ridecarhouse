@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const AddItem = () => {
   const [user] = useAuthState(auth);
@@ -45,6 +46,7 @@ const AddItem = () => {
     <>
       <h2 className='text-center uppercase text-4xl mt-4'>Add Items</h2>
       <div className='md:w-2/4 w-4/4 bg-slate-200 mx-4 md:mx-auto md:container my-8 py-8 md:px-12 rounded-lg'>
+        <PageTitle title="Add Item"></PageTitle>
         <form className="md:w-full mx-4" onSubmit={handleForm}>
           <div className="md:flex md:items-center mb-6 w-6/6">
             <div className="md:w-2/6 text-left">

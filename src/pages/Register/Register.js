@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import slide1 from '../../images/banner1.png'
 import useToken from '../../Hooks/useToken';
 import SocialLogin from '../Login/SocialLogin';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Register = () => {
   let navigate = useNavigate();
@@ -85,7 +86,7 @@ const Register = () => {
 
   return (
     <div className='md:p-20' style={{ backgroundImage: `url(${slide1})`, backgroundPosition: "center", backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-
+      <PageTitle title="Registe"></PageTitle>
       <div className='md:w-2/6 sm:w-4/6 md:h-82 md:mr-auto flex flex-col justify-center bg-slate-100 border-2 rounded-3xl'>
         <div className='text-center my-8'>
           <h2 className='text-4xl text-cyan-500'>Ride Car-House</h2>

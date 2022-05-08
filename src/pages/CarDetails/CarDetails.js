@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 import './CarDetails.css'
 
 const CarDetails = () => {
@@ -66,6 +68,7 @@ const CarDetails = () => {
   return (
     <>
       <div className='container mx-auto my-12 border p-4'>
+        <PageTitle title={`${car.car_name}`}></PageTitle>
         <h1 className='text-center underline text-2xl uppercase text-sky-500 mb-8'>Product Details</h1>
         <div className="lg:flex lg:flex-row lg:gap-4 sm:flex-col sm:mb-4">
           <div className='bg-gray-100 border p-4 h-88 lg:w-1/3 flex items-center'>

@@ -2,10 +2,12 @@ import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import { GrView } from 'react-icons/gr';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Myitems = () => {
   const [items, setItems] = useState([]);
@@ -60,6 +62,7 @@ const Myitems = () => {
       {
         loading ?
           <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto my-72">
+            <PageTitle title="My Items"></PageTitle>
             < div className="animate-pulse flex space-x-4" >
               <div className="rounded-full bg-slate-200 h-10 w-10"></div>
               <div className="flex-1 space-y-6 py-1">
