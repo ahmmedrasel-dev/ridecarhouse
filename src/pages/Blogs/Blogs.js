@@ -26,7 +26,7 @@ const Blogs = () => {
         </div>
 
         <div className='bg-slate-100 p-4 rounded-lg drop-shadow-md'>
-          <p className='font-medium'>Differeant between Javascript and Node Js?</p>
+          <p className='font-medium'>What is the purpose of jwt and how does it work?</p>
           <article className='pt-4'>
             JSON Web Token is used to create access tokens for an application. It works this way: the server generates a token that certifies the user identity, and sends it to the client.
 

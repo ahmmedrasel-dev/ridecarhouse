@@ -73,12 +73,14 @@ const ManageItem = () => {
           </div >
 
           :
-          <div className='container mx-auto h-screen'>
+          <div className='container mx-auto md:h-82'>
             <div className='mt-5 text-center'>
-              <h2 className='text-4xl uppercase text-red-500'>All Inventories Items</h2>
-              <button className='border-2 py-2 px-5 rounded flex items-center hover:bg-sky-500 hover:text-white' onClick={() => navigate('/add-item')}><GrAddCircle className='px-1 text-2xl' />Add Item</button>
+              <h2 className='md:text-4xl text-2xl uppercase text-red-500'>All Inventories Items</h2>
+              <div className='flex justify-center'>
+                <button className='border-2 py-2 px-5 rounded flex md:items-center justify-center hover:bg-sky-500 hover:text-white' onClick={() => navigate('/add-item')}><GrAddCircle className='px-1 text-2xl' />Add Item</button>
+              </div>
             </div>
-            <table className='w-full mt-5 border-2'>
+            <table className='w-full mt-5 border-2 overflow-x-scroll'>
               <thead>
                 <tr>
                   <th className='border-2 md:text-left md:pl-4 text-center bg-sky-500 text-white'>Car Name</th>
